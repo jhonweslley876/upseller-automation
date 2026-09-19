@@ -6,10 +6,15 @@ import pyperclip
 
 def pageCounter(counter):
     mouseMovFunction(757, 100)
+    time.sleep(0.1)
+
+
     keyboard.write(str(counter))
-    time.sleep(0.5)
+    time.sleep(0.1)
+
+
     keyboard.press_and_release('enter')
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 #Função que pega o nome do cliente na nota fiscal
 def nameSelect():
@@ -25,10 +30,9 @@ def nameSelect():
 
     pyautogui.doubleClick(new_x, new_y)
     keyboard.press_and_release('ctrl+c')
-    keyboard.press_and_release('ctrl+c')
-    time.sleep(0.5)
+    time.sleep(0.1)
     name = pyperclip.paste()
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 #Função que move e clica o mouse para as posições desejadas.
 def mouseMovFunction(x, y):
@@ -41,23 +45,26 @@ def mouseMovFunction(x, y):
     new_y = int(y * height / height_base)
 
     pyautogui.click(new_x, new_y)
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 #Função que chama a função de movimento, colocando todos os movimentos necessários da máquina.
 def mouseMovement(counter):
-    if counter == 1:
+
+    first_page = counter == 2
+
+    if first_page:
         nameSelect()
         mouseMovFunction(232, 100)
         mouseMovFunction(742, 415)
-        mesage(True)
+        mesage()
         mouseMovFunction(232, 100)
         mouseMovFunction(700, 415)
         pageCounter(counter)
-    elif counter > 1:
+    else:
         nameSelect()
         mouseMovFunction(272, 100)
         mouseMovFunction(742, 415)
-        mesage(True)
+        mesage()
         mouseMovFunction(272, 100)
         mouseMovFunction(700, 415)
         print(counter)
@@ -76,10 +83,7 @@ def mesages(value):
     print(mesageType)
 
 #gerador de mensagens
-def mesage(estate):
-    if estate:
-        value = random.randint(1, 2)
-        mesages(value)
-    time.sleep(1)
-
-time.sleep(2)
+def mesage():
+    value = random.randint(1, 2)
+    mesages(value)
+    time.sleep(0.1)

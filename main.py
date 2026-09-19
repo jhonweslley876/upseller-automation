@@ -1,8 +1,8 @@
 from functions import *
 
-counter = 1
+counter = 2
+time.sleep(3)
 
-while True:
+for i in range(8):
     mouseMovement(counter)
-    time.sleep(3)
     counter += 1
